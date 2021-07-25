@@ -84,3 +84,15 @@ header nav a:hover{
 .botao i{
   margin-right: 8px;
 }
+
+
+.box-heroi{
+  height: 80px;
+  width: 80px;
+  display: block;
+}
+
+.carossel-heroi{
+  margin-top: 5px;
+}
+
