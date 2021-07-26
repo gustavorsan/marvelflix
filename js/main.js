@@ -9,7 +9,7 @@ const hash = 'da6919880b12cef416cb1ab8cfb0362c';
 
 
 const randomCharacter = Math.random() * 1200;
-const limit = 1
+const limit = 11
 
 
 
@@ -26,23 +26,6 @@ fetch(fetchURL).then(res => {
     throw new Error(res.status + ' ' + res.statusText);
   }
 }).then(jsonBody => {
-  const carrosselHero = document.querySelector('.owl-stage');
-  var owl = $('.owl-slider').owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 3
-      },
-      1000: {
-        items: 5
-      }
-    }
-  });
   const results = jsonBody.data.results;
   const heroes = []
 
@@ -55,10 +38,7 @@ fetch(fetchURL).then(res => {
     heroes.push(heroData);
   });
 
-
-  createCarrossel(heroes, owl);
-
-
+  createCarrossel(heroes)
   console.log(jsonBody.data.results);
 }).catch(err => {
   console.log(err)
@@ -66,50 +46,36 @@ fetch(fetchURL).then(res => {
 
 
 
-const createCarrossel = (heroes, owl) => {
+const createCarrossel = (heroes) => {
 
-  const result = heroes.map(item => {
-    const html = createItem(item);
-    return html;
-  });
-  var text = '';
+
+
   heroes.forEach(items => {
-    text += createItem(items);
+    const html = createItem(items);
+    $('.owl-carousel').owlCarousel('add', html).owlCarousel('update');
   })
-  console.log(text);/*
-  $('.owl-carousel')
-    .trigger('add.owl.carousel', [text])
-    .trigger('refresh.owl.carousel');
 
-  */
-  owl.data('owlCarousel').addItem(text);
-  owl.reinit();
 }
 
 const createItem = ({ heroImg, heroName }) => {
-  /*
-    const divItem = document.createElement('div');
-    const imgHero = document.createElement('img');
-    const txtName = document.createElement('text')
-  
-    imgHero.src = heroImg;
-    imgHero.alt = heroName;
-  
-    txtName.textContent = heroName;
-  
-    imgHero.classList.add('box-heroi');
-    divItem.appendChild(imgHero);
-    divItem.appendChild(txtName);
-  
-    divItem.classList.add('item');
-  */
-  const divItem = ` 
-    <div class="item">
-      <img src="${heroImg}" class="box-heroi"  alt="${heroName}" srcset="" />
-      <p>${heroName}</p>
-    </div>
-    
-  `
+
+  const divItem = document.createElement('div');
+  const imgHero = document.createElement('img');
+  const txtName = document.createElement('text')
+
+  imgHero.src = heroImg;
+  imgHero.alt = heroName;
+
+  txtName.textContent = heroName;
+
+  imgHero.classList.add('box-heroi');
+  divItem.appendChild(imgHero);
+  divItem.appendChild(txtName);
+
+  divItem.classList.add('item');
+
+
+
   return divItem;
 
 }

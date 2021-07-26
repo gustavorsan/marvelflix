@@ -1,17 +1,16 @@
-/*Declação de váriaveis*/
 :root{
- --vermelho: #E50914;
- --preto: #141414;
+  --vermelho: #E50914;
+  --preta: #141414;
 }
-/*Limpando os estilos default*/
+
 *{
   margin: 0;
   padding: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
-/*Elementos Base*/
+/*elementos base*/
 body{
-  background: var(--preto);
+  background: var(--preta);
   font-family: 'Times New Roman', Times, serif;
   color: #ffffff;
 }
@@ -38,11 +37,12 @@ header nav a{
 header nav a:hover{
   color: #fff;
 }
-/*Imagem Principal*/
-.imagem-principal{
-  font-size: 16px;
-  background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%), url('/img/marvel.jpg');
 
+/*filme principal*/
+.heroi-principal{
+  font-size: 16px;
+  background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100% ), url('/img/marvel.jpg');
+  
   height: 400px;
   background-size: cover;
 
@@ -50,14 +50,16 @@ header nav a:hover{
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+
 }
 
-.imagem-principal .descricao{
+.heroi-principal .descricao{
   margin-top: 10px;
   margin-bottom: 40px;
 }
 
-.imagem-principal .titulo{
+.heroi-principal .titulo{
   margin-top: 15%;
   font-size: 40px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -67,7 +69,7 @@ header nav a:hover{
   background-color: rgba(0,0,0,.50);
   border: none;
   color: white;
-
+  
   padding: 15px 30px;
   margin-right: 15px;
   font-size: 12px;
@@ -85,14 +87,17 @@ header nav a:hover{
   margin-right: 8px;
 }
 
+.heroi-principal .container{
+  width: 70%;
+}
+
 
 .box-heroi{
-  height: 80px;
+  height: 200px;
   width: 80px;
   display: block;
 }
 
-.carossel-heroi{
+.carrossel-herois{
   margin-top: 5px;
 }
-
